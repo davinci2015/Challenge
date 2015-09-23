@@ -10,4 +10,6 @@
     <dimen name="text_size_standard_small">14sp</dimen>
     <dimen name="text_size_standard">16sp</dimen>
     <dimen name="text_size_standard_large">18sp</dimen>
+
+    <dimen name="textbox_height">170dp</dimen>
 </resources>

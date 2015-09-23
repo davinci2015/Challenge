@@ -34,5 +34,12 @@
     <string name="registration_error">Username or mail already in use!</string>
     <string name="registration_success_title">Success</string>
     <string name="registration_success_message">Registration was successful! You will be logged in now.</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+
+    <string name="feedback_hint">Enter your text here</string>
+    <string name="feedback_group_title">Choose a group:</string>
+    <string name="feedback_rate_title">Describe your feedback:</string>
+
+    <string name="action_submit">Submit</string>
 
 </resources>
