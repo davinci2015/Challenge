@@ -27,12 +27,11 @@ public class LoginInteractorImpl implements LoginInteractor {
         ApiManager.getService().userLogin(new Gson().toJson(credentials), responseCallback);
     }
 
-    private Callback<String> responseCallback = new Callback<String>() {
+    private Callback<User> responseCallback = new Callback<User>() {
 
         @Override
-        public void success(String user, Response response) {
-            Log.d("hr.foi.challenge", user);
-            //listener.onLoginSuccess(user);
+        public void success(User user, Response response) {
+            listener.onLoginSuccess(user);
         }
 
         @Override

@@ -14,7 +14,7 @@ public interface FeedbackService {
 
     @FormUrlEncoded
     @POST("/challenge/login.php")
-    void userLogin(@Field("obj")String credentials, Callback<String> userCallback);
+    void userLogin(@Field("obj")String credentials, Callback<User> userCallback);
 
     @FormUrlEncoded
     @POST("/challenge/register.php")

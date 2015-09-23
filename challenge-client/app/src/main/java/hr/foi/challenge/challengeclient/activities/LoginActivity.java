@@ -66,11 +66,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void showError(@StringRes int error) {
-<<<<<<< HEAD
         showErrorMessage(getResources().getString(error));
-=======
-        
->>>>>>> c94067b48d5b2c4de2ef1e7bab45222d076d37a0
     }
 }
 
