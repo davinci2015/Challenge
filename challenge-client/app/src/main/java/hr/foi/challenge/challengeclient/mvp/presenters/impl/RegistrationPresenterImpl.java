@@ -39,7 +39,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
                          String firstName, String lastName, String skype) {
 
         if (isDataValid(username, mail, password, passwordConfirmation, firstName, lastName)) {
-            User user = new User(new Credentials(username, password), mail, firstName, lastName, skype);
+            User user = new User(new Credentials(username, password), firstName, lastName, mail, skype);
 
             view.showProgress();
             interactor.register(listener, user);
