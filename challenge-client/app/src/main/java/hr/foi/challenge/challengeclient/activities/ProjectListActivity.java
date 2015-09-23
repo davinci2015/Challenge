@@ -19,7 +19,7 @@ import java.util.Locale;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.SectionsPagerAdapter;
 
-public class ProjectActivity extends AppCompatActivity implements ActionBar.TabListener {
+public class ProjectListActivity extends AppCompatActivity implements ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide

@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onLoginSuccess() {
-        startActivity(new Intent(this, ProjectActivity.class));
+        startActivity(new Intent(this, ProjectListActivity.class));
         finish();
     }
 

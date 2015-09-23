@@ -1,13 +1,10 @@
 package hr.foi.challenge.challengeclient.adapters;
 
-import android.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.Locale;
 
-import hr.foi.challenge.challengeclient.R;
-import hr.foi.challenge.challengeclient.activities.ProjectActivity;
 import hr.foi.challenge.challengeclient.fragments.ProjectFragment;
 
 /**

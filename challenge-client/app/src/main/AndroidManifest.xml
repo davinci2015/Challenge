@@ -31,7 +31,7 @@
                 android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
         </activity>
         <activity
-            android:name=".activities.ProjectActivity"
+            android:name=".activities.ProjectListActivity"
             android:label="@string/title_activity_project"
             android:parentActivityName=".activities.BaseActivity" >
             <meta-data
