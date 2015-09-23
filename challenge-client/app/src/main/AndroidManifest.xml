@@ -24,16 +24,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ProjectActivity"
-            android:label="@string/title_activity_project"
-            android:parentActivityName=".activities.BaseActivity" >
+            android:name=".activities.RegisterActivity"
+            android:label="@string/title_activity_register" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
         </activity>
         <activity
-            android:name=".activities.RegisterActivity"
-            android:label="@string/title_activity_register" >
+            android:name=".activities.ProjectActivity"
+            android:label="@string/title_activity_project"
+            android:parentActivityName=".activities.BaseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
