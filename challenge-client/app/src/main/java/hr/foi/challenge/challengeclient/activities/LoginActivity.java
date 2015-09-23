@@ -1,5 +1,6 @@
 package hr.foi.challenge.challengeclient.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.widget.Button;
@@ -41,27 +42,31 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onLoginSuccess() {
-        // startActivity();
+        Intent toProjects = new Intent(this, ProjectActivity.class);
+        toProjects.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        toProjects.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(toProjects);
     }
 
     @Override
     public void onLoginFail() {
-
+        showError(R.string.incorrect_credentials);
     }
 
     @Override
     public void showProgress() {
-
+        showProgressDialog();
     }
 
     @Override
     public void hideProgress() {
-
+        hideProgressDialog();
     }
 
     @Override
     public void showError(@StringRes int error) {
-
+        showErrorMessage(getResources().getString(error));
     }
 }
 

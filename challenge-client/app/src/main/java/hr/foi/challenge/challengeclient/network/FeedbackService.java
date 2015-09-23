@@ -18,6 +18,6 @@ public interface FeedbackService {
 
     @FormUrlEncoded
     @POST("/challenge/register.php")
-    void userRegistration(@Field("obj")User user, Callback<User> userCallback);
+    void userRegistration(@Field("obj")String user, Callback<User> userCallback);
 
 }

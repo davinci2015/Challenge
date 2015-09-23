@@ -2,7 +2,18 @@
     <string name="app_name">Challenge Client</string>
     <string name="please_wait">Please wait...</string>
     <string name="register">Register</string>
-    <string name="empty_credentials_error">This field is required</string>
+    <string name="empty_credentials_error">Username and password is required</string>
     <string name="username_error">Username is too short</string>
     <string name="password_error">Password is too short</string>
+    <string name="incorrect_credentials">Provided credentials are incorrect</string>
+    <string name="title_activity_project">ProjectActivity</string>
+    <string name="username">Username</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
