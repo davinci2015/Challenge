@@ -26,7 +26,7 @@ public class ApiManager {
 
     private static final String TAG = "Network";
 
-    private static final String API_ENDPOINT = "https://boatit.infinum.co";
+    private static final String API_ENDPOINT = "http://46.101.207.199";
 
     private static final OkClient OK_CLIENT = new OkClient(new OkHttpClient());
 

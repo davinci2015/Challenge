@@ -2,6 +2,8 @@ package hr.foi.challenge.challengeclient.mvp.interactors.impl;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import hr.foi.challenge.challengeclient.models.Credentials;
 import hr.foi.challenge.challengeclient.models.User;
 import hr.foi.challenge.challengeclient.mvp.interactors.LoginInteractor;
@@ -22,7 +24,7 @@ public class LoginInteractorImpl implements LoginInteractor {
     public void login(LoginListener listener, String username, String password) {
         this.listener = listener;
         Credentials credentials = new Credentials(username, password);
-        ApiManager.getService().userLogin(credentials, responseCallback);
+        ApiManager.getService().userLogin(new Gson().toJson(credentials), responseCallback);
     }
 
     private Callback<String> responseCallback = new Callback<String>() {
