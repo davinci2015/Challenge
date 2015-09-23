@@ -2,11 +2,11 @@
     <string name="app_name">Challenge Client</string>
     <string name="please_wait">Please wait...</string>
     <string name="register">Register</string>
-    <string name="empty_credentials_error">Username and password is required</string>
-    <string name="username_error">Username is too short</string>
-    <string name="password_error">Password is too short</string>
-    <string name="incorrect_credentials">Provided credentials are incorrect</string>
-    <string name="title_activity_project">ProjectActivity</string>
+    <string name="empty_credentials_error">Please enter your credentials.</string>
+    <string name="username_error">Username is too short.</string>
+    <string name="password_error">Password is too short.</string>
+    <string name="incorrect_credentials">Provided credentials are incorrect.</string>
+    <string name="title_activity_project">Projects</string>
     <string name="username">Username</string>
 
     <string name="title_section1">Section 1</string>
@@ -25,7 +25,20 @@
     <string name="registration_last_hint">Last name</string>
     <string name="registration_skype_hint">Skype</string>
 
+<<<<<<< HEAD
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+    <string name="registration_fields_error">All fields except Skype are mandatory.</string>
+    <string name="registration_username_length_error">Username has to be at least 5 characters long.</string>
+    <string name="registration_username_error">Please enter a valid username.</string>
+    <string name="registration_email_error">Please enter a valid mail.</string>
+    <string name="registration_password_length_error">Password has to be at least 6 characters long.</string>
+    <string name="registration_password_confirmation_error">Passwords don\'t match.</string>
+    <string name="registration_error">Username or mail already in use!</string>
+    <string name="registration_success_title">Success</string>
+    <string name="registration_success_message">Registration was successful! You will be logged in now.</string>
+
+>>>>>>> 4770142764bd51e7357fda9f1e7bc8b612a62c28
 
 </resources>

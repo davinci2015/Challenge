@@ -19,6 +19,8 @@ import hr.foi.challenge.challengeclient.mvp.views.LoginView;
  */
 public class LoginActivity extends BaseActivity implements LoginView {
 
+    public static final int REGISTRATION_REQUEST = 1;
+
     @Bind(R.id.sign_in_button) Button signIn;
     @Bind(R.id.register_button) Button register;
     @Bind(R.id.username) EditText username;
@@ -40,13 +42,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
         presenter.login(username.getText().toString(), password.getText().toString());
     }
 
+    @OnClick(R.id.register_button)
+    protected void onClickRegister() {
+        startActivityForResult(new Intent(this, RegisterActivity.class), REGISTRATION_REQUEST);
+    }
+
     @Override
     public void onLoginSuccess() {
-        Intent toProjects = new Intent(this, ProjectActivity.class);
-        toProjects.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        toProjects.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        startActivity(toProjects);
+        startActivity(new Intent(this, ProjectActivity.class));
+        finish();
     }
 
     @Override
@@ -67,6 +71,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void showError(@StringRes int error) {
         showErrorMessage(getResources().getString(error));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REGISTRATION_REQUEST && resultCode == RESULT_OK) {
+            onLoginSuccess();
+        }
     }
 }
 

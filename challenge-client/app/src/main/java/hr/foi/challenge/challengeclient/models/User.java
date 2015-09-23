@@ -5,13 +5,27 @@ package hr.foi.challenge.challengeclient.models;
  */
 public class User {
 
-    long id;
-    Credentials credentials;
-    String name;
-    String surname;
-    String mail;
-    String skype;
-    boolean evaluator;
+    private long id;
+
+    private Credentials credentials;
+
+    private String name;
+
+    private String surname;
+
+    private String mail;
+
+    private String skype;
+
+    private boolean evaluator;
+
+    public User(Credentials credentials, String name, String surname, String mail, String skype) {
+        this.credentials = credentials;
+        this.name = name;
+        this.surname = surname;
+        this.mail = mail;
+        this.skype = skype;
+    }
 
     public long getId() {
         return id;

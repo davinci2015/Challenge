@@ -6,6 +6,7 @@ package hr.foi.challenge.challengeclient.models;
 public class Credentials {
 
     private String username;
+
     private String password;
 
     public Credentials(String username, String password) {
