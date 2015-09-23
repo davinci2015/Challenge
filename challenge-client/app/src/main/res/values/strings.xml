@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Challenge Client</string>
     <string name="please_wait">Please wait...</string>
+    <string name="loading_projects">Loading projects...</string>
     <string name="register">Register</string>
     <string name="empty_credentials_error">Username and password is required</string>
     <string name="username_error">Username is too short</string>
