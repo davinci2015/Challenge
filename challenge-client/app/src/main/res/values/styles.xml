@@ -5,4 +5,21 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Input">
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="Input.Email">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+    <style name="Input.Name">
+        <item name="android:inputType">textPersonName|textCapWords</item>
+    </style>
+    <style name="Input.Password">
+        <item name="android:inputType">textPassword</item>
+    </style>
+    <style name="Input.Password.Login">
+        <item name="android:imeOptions">actionGo</item>
+    </style>
+
 </resources>

@@ -61,7 +61,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void showError(@StringRes int error) {
-
+        
     }
 }
 
