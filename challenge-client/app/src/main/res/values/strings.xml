@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Challenge Client</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="register">Register</string>
+    <string name="empty_credentials_error">This field is required</string>
+    <string name="username_error">Username is too short</string>
+    <string name="password_error">Password is too short</string>
+</resources>
