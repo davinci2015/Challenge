@@ -4,6 +4,7 @@ import hr.foi.challenge.challengeclient.models.Credentials;
 import hr.foi.challenge.challengeclient.models.User;
 import retrofit.Callback;
 import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.POST;
 
 /**
@@ -11,9 +12,11 @@ import retrofit.http.POST;
  */
 public interface FeedbackService {
 
+    @FormUrlEncoded
     @POST("/challenge/login.php")
-    void userLogin(@Field("obj")Credentials credentials, Callback<String> userCallback);
+    void userLogin(@Field("obj")String credentials, Callback<String> userCallback);
 
+    @FormUrlEncoded
     @POST("/challenge/register.php")
     void userRegistration(@Field("obj")User user, Callback<User> userCallback);
 
