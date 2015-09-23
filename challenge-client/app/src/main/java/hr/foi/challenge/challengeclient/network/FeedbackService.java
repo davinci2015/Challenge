@@ -10,6 +10,7 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 /**
  * Created by Tomislav Turek on 23.09.15..
@@ -24,8 +25,7 @@ public interface FeedbackService {
     @POST("/challenge/register.php")
     void userRegistration(@Field("obj")String user, Callback<User> userCallback);
 
-    @FormUrlEncoded
-    @GET("/challenge/projects.php")
-    void fetchProjects(@Field("flag")boolean flag, @Field("mail") String mail, Callback<List<Project>> callback);
+    @GET("/challenge/get_projects_data.php")
+    void fetchProjects(@Query("mail") String mail, Callback<List<Project>> callback);
 
 }

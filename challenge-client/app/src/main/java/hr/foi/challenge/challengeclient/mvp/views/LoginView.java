@@ -6,7 +6,6 @@ package hr.foi.challenge.challengeclient.mvp.views;
 public interface LoginView extends BaseView {
 
     void onLoginSuccess();
-
     void onLoginFail();
 
 }

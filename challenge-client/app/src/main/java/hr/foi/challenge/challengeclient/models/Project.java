@@ -10,7 +10,7 @@ public class Project {
 
     long id;
     String name;
-    Date date;
+    String date;
     String description;
     boolean flag;
 
@@ -30,11 +30,11 @@ public class Project {
         this.name = name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

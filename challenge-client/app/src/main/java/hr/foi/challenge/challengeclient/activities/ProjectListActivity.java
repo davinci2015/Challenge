@@ -1,6 +1,7 @@
 package hr.foi.challenge.challengeclient.activities;
 
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -18,8 +19,11 @@ import java.util.Locale;
 
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.SectionsPagerAdapter;
+import hr.foi.challenge.challengeclient.fragments.ProjectFragment;
+import hr.foi.challenge.challengeclient.mvp.views.BaseView;
+import hr.foi.challenge.challengeclient.mvp.views.ProjectListView;
 
-public class ProjectListActivity extends AppCompatActivity implements ActionBar.TabListener {
+public class ProjectListActivity extends BaseActivity implements BaseView, ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -60,10 +64,20 @@ public class ProjectListActivity extends AppCompatActivity implements ActionBar.
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
         // a reference to the Tab.
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
 
@@ -79,6 +93,8 @@ public class ProjectListActivity extends AppCompatActivity implements ActionBar.
                             .setTabListener(this));
         }
     }
+
+
 
 
     @Override
@@ -118,4 +134,18 @@ public class ProjectListActivity extends AppCompatActivity implements ActionBar.
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
 
+    @Override
+    public void showProgress() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideProgress() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void showError(@StringRes int error) {
+        showErrorMessage(getResources().getString(error));
+    }
 }

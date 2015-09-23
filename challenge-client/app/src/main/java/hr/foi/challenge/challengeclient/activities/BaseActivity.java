@@ -17,7 +17,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void showProgressDialog() {
         if (progressDialog == null || !progressDialog.isShowing()) {
-            progressDialog = ProgressDialog.show(this, getString(R.string.app_name), getString(R.string.please_wait), true, false);
+            progressDialog = ProgressDialog.show(this, null, getString(R.string.please_wait), true, false);
         }
     }
 
