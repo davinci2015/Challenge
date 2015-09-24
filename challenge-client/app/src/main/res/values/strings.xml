@@ -10,6 +10,7 @@
     <string name="title_activity_project">ProjectActivity</string>
     <string name="username">Username</string>
     <string name="submit">Submit</string>
+    <string name="take_photo">Take a photo</string>
 
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>

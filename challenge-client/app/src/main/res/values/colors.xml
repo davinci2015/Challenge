@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="login_button_pressed">#1A237E</color>
-    <color name="foundation">#246D5E</color>
-    <color name="foundation_sister_background">#054639</color>
-    <color name="foundation_sister_text">#B3CEC9</color>
+    <color name="foundation">#049372</color>
+    <color name="foundation_sister_background">#2BBBAD</color>
+    <color name="foundation_sister_text">#FFF</color>
 </resources>

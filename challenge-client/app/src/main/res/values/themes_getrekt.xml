@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="getRekt" parent="@style/_getRekt"/>
+
+  <style name="_getRekt" parent="Theme.AppCompat.Light">
+
+    <item name="android:editTextStyle">@style/EditTextgetRekt</item>
+
+    <item name="android:spinnerStyle">@style/SpinnergetRekt</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemgetRekt</item>
+
+  </style>
+
+</resources>

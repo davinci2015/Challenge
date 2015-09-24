@@ -1,5 +1,7 @@
 package hr.foi.challenge.challengeclient.activities;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -207,5 +209,16 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     private void onEndActivity() {
         finish();
+    }
+
+    @OnClick(R.id.cameraButton)
+    protected void takePhoto(Button button) {
+        startActivityForResult(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE), 1888);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1888 && resultCode == RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+        }
     }
 }
