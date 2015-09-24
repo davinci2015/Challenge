@@ -22,8 +22,17 @@
   <style name="ActionTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="android:actionBarStyle">@style/ActionBar</item>
     <item name="actionBarStyle">@style/ActionBar</item>
-    <item name="android:actionBarTabStyle">@style/ActionTab</item>
     <item name="android:actionBarTabBarStyle">@style/ActionTab</item>
+
+
+    <item name="android:actionBarItemBackground">@drawable/selectable_background_test_style</item>
+    <item name="android:popupMenuStyle">@style/PopupMenu.Test_style</item>
+    <item name="android:dropDownListViewStyle">@style/DropDownListView.Test_style</item>
+    <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Test_style</item>
+    <item name="android:actionDropDownStyle">@style/DropDownNav.Test_style</item>
+    <item name="android:actionModeBackground">@drawable/cab_background_top_test_style</item>
+    <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_test_style</item>
+    <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Test_style</item>
   </style>
 
   <style name="ActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">

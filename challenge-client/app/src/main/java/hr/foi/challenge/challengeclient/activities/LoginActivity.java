@@ -3,9 +3,14 @@ package hr.foi.challenge.challengeclient.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.design.widget.TextInputLayout;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,6 +33,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Bind(R.id.register_button) Button register;
     @Bind(R.id.username) EditText username;
     @Bind(R.id.password) EditText password;
+    @Bind(R.id.logoImage)
+    ImageView logo;
+    @Bind(R.id.firstTIL)
+    TextInputLayout first;
+    @Bind(R.id.secondTIL) TextInputLayout second;
 
     LoginPresenter presenter;
 
@@ -44,6 +54,21 @@ public class LoginActivity extends BaseActivity implements LoginView {
         }
 
         presenter = MvpFactory.getPresenter(this);
+        startAnimation();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    private void startAnimation() {
+        Animation moveAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_logo);
+        Animation fadeAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.show_login);
+        logo.startAnimation(moveAnimation);
+        signIn.startAnimation(fadeAnimation);
+        register.startAnimation(fadeAnimation);
+        username.startAnimation(fadeAnimation);
+        password.startAnimation(fadeAnimation);
+        first.startAnimation(fadeAnimation);
+        second.startAnimation(fadeAnimation);
     }
 
     @OnClick(R.id.sign_in_button)
