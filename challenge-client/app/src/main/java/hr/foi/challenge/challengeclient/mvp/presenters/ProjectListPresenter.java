@@ -6,5 +6,6 @@ package hr.foi.challenge.challengeclient.mvp.presenters;
 public interface ProjectListPresenter {
 
     void loadProjects(boolean flag);
+    void sendCode(String code);
 
 }

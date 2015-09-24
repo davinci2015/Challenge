@@ -3,14 +3,17 @@ package hr.foi.challenge.challengeclient.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
+import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.mvp.presenters.LoginPresenter;
 import hr.foi.challenge.challengeclient.mvp.views.LoginView;
 
@@ -32,8 +35,14 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         ButterKnife.bind(this);
+
+
+        Session session = new Session(FeedbackApplication.getInstance());
+        if(session.retrieveSession() != null) {
+            onLoginSuccess();
+        }
+
         presenter = MvpFactory.getPresenter(this);
     }
 

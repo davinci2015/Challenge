@@ -34,5 +34,4 @@ public class ProjectInteractorImpl implements ProjectInteractor {
             listener.onReceivedFailed(error.getMessage());
         }
     };
-
 }

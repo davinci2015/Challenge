@@ -9,6 +9,7 @@ import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.models.Project;
 import hr.foi.challenge.challengeclient.mvp.interactors.ProjectListInteractor;
 import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListListener;
+import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListener;
 import hr.foi.challenge.challengeclient.network.ApiManager;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -31,6 +32,12 @@ public class ProjectListInteractorImpl implements ProjectListInteractor {
         ApiManager.getService().fetchProjects(mail, projectFetch);
     }
 
+    @Override
+    public void send(ProjectListListener listener, String code) {
+        this.listener = listener;
+        ApiManager.getService().sendInviteCode(code, callback);
+    }
+
     private Callback<List<Project>> projectFetch = new Callback<List<Project>>() {
         @Override
         public void success(List<Project> projects, Response response) {
@@ -42,4 +49,17 @@ public class ProjectListInteractorImpl implements ProjectListInteractor {
             listener.onReceivedFailed(error.getMessage());
         }
     };
+
+    private Callback callback = new Callback() {
+        @Override
+        public void success(Object o, Response response) {
+            listener.onCodeSuccess();
+        }
+
+        @Override
+        public void failure(RetrofitError error) {
+            listener.onCodeFailed();
+        }
+    };
+
 }

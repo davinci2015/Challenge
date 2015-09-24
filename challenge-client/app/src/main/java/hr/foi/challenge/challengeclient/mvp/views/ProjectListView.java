@@ -13,4 +13,7 @@ public interface ProjectListView {
     void onReceivedFailed();
     void onReceivedEmpty();
 
+    void onCodeSuccess();
+    void onCodeFailed();
+
 }

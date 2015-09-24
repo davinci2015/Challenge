@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.SectionsPagerAdapter;
+import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.mvp.views.BaseView;
 
 public class ProjectListActivity extends BaseActivity implements BaseView, ActionBar.TabListener {
@@ -84,9 +85,6 @@ public class ProjectListActivity extends BaseActivity implements BaseView, Actio
         }
     }
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -107,6 +105,10 @@ public class ProjectListActivity extends BaseActivity implements BaseView, Actio
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void logout(MenuItem item) {
+        showDialog("Sign out?", "SIGN OUT", "CANCEL", this);
     }
 
     @Override

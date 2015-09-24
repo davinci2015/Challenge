@@ -6,15 +6,18 @@ package hr.foi.challenge.challengeclient.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.ProjectListAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
@@ -31,7 +34,11 @@ public class ProjectFragment extends Fragment implements ProjectListView {
     private ProjectListPresenter presenter;
     boolean flag;
 
-    @Bind(R.id.listView) ListView listView;
+    @Bind(R.id.listView)
+    ListView listView;
+
+    @Bind(R.id.codeText)
+    EditText code;
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -84,5 +91,24 @@ public class ProjectFragment extends Fragment implements ProjectListView {
     @Override
     public void onReceivedEmpty() {
 
+    }
+
+    @Override
+    public void onCodeSuccess() {
+        // zovi
+    }
+
+    @Override
+    public void onCodeFailed() {
+
+    }
+
+    @OnClick(R.id.submitCode)
+    void submitCode() {
+        if(TextUtils.isEmpty(code.getText().toString())) {
+            // zovi activity da izbaci grešku
+        } else {
+            presenter.sendCode(code.getText().toString());
+        }
     }
 }

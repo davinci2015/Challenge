@@ -26,6 +26,11 @@ public class ProjectListPresenterImpl implements ProjectListPresenter {
         interactor.fetch(listener, flag);
     }
 
+    @Override
+    public void sendCode(String code) {
+        interactor.send(listener, code);
+    }
+
     private ProjectListListener listener = new ProjectListListener() {
         @Override
         public void onReceived(List<Project> projects) {
@@ -40,6 +45,16 @@ public class ProjectListPresenterImpl implements ProjectListPresenter {
         @Override
         public void onReceivedFailed(String error) {
             view.onReceivedFailed();
+        }
+
+        @Override
+        public void onCodeSuccess() {
+            view.onCodeSuccess();
+        }
+
+        @Override
+        public void onCodeFailed() {
+            view.onCodeFailed();
         }
     };
 

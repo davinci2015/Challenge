@@ -1,5 +1,6 @@
 package hr.foi.challenge.challengeclient.helpers;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,7 +8,6 @@ import android.content.SharedPreferences.Editor;
 
 import com.google.gson.Gson;
 
-import java.util.Date;
 
 import hr.foi.challenge.challengeclient.activities.LoginActivity;
 import hr.foi.challenge.challengeclient.models.User;
@@ -60,7 +60,9 @@ public class Session {
         toLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         toLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
+
         this.context.startActivity(toLogin);
+        ((Activity) context).finish();
     }
 
     @Override

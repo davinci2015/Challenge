@@ -13,4 +13,7 @@ public interface ProjectListListener {
     void onReceivedEmpty();
     void onReceivedFailed(String error);
 
+    void onCodeSuccess();
+    void onCodeFailed();
+
 }
