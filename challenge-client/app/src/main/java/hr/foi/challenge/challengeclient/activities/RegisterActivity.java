@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
+import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -50,6 +52,8 @@ public class RegisterActivity extends BaseActivity implements RegistrationView {
         ButterKnife.bind(this);
 
         presenter = MvpFactory.getPresenter(this);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     @OnClick(R.id.confirm_register_button)
@@ -104,5 +108,13 @@ public class RegisterActivity extends BaseActivity implements RegistrationView {
     private void sendResult() {
         setResult(RESULT_OK);
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

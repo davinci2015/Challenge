@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="hr.foi.challenge.challengeclient.activities.ProjectActivity">
     <item android:id="@+id/action_add_feedback"
+        android:icon="@drawable/ic_note_add_white_24dp"
         android:title="@string/action_add_feedback"
         app:showAsAction="always" />
 </menu>

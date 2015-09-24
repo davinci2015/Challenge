@@ -7,7 +7,7 @@ import hr.foi.challenge.challengeclient.R;
 
 public class RankActivity extends BaseActivity {
 
-    private static final String URL = "http://46.101.207.199/admin/ajax/get_rank_list.php?server_call=1";
+    private static final String URL = "http://46.101.207.199/admin/index.html#/home";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,7 @@ public class RankActivity extends BaseActivity {
         setContentView(R.layout.activity_rank);
 
         WebView webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(URL);
     }
 }

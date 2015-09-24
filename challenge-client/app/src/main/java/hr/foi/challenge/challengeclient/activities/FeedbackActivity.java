@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -84,6 +85,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         hideProgress();
         projectTitle.setText(new Session(FeedbackApplication.getInstance()).retrieveProjectTitle());
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         imagesInit();
     }
 

@@ -35,6 +35,10 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:textColor="#DEFFF9"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 android:text="@string/submit"
                 android:id="@+id/submitCode" />
         </LinearLayout>
