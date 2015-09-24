@@ -11,15 +11,28 @@ public class FeedbackPresenterImpl implements FeedbackPresenter {
 
     private FeedbackView view;
 
-    private FeedbackInteractor interactor;
+    private FeedbackInteractor feedbackInteractor;
 
-    public FeedbackPresenterImpl(FeedbackView view, FeedbackInteractor interactor) {
+    private int feedbackType;
+
+    public FeedbackPresenterImpl(FeedbackView view, FeedbackInteractor feedbackInteractor) {
         this.view = view;
-        this.interactor = interactor;
+        this.feedbackInteractor = feedbackInteractor;
+        feedbackType = 0;
     }
 
     @Override
-    public void sendFeedback() {
+    public void sendFeedback(String feedbackText) {
 
+    }
+
+    @Override
+    public void changeFeedbackType(int type) {
+        feedbackType = type;
+    }
+
+    @Override
+    public void getGroups() {
+        
     }
 }

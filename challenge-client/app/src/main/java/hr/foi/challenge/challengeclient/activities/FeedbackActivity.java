@@ -8,12 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.List;
+
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.challenge.challengeclient.R;
+import hr.foi.challenge.challengeclient.helpers.MvpFactory;
+import hr.foi.challenge.challengeclient.mvp.presenters.FeedbackPresenter;
 import hr.foi.challenge.challengeclient.mvp.views.FeedbackView;
 
-public class FeedbackActivity extends BaseActivity implements FeedbackView {
+class FeedbackActivity extends BaseActivity implements FeedbackView {
+
+    private static int NEGATIVE_FEEDBACK = -1;
+
+    private static int NEUTRAL_FEEDBACK = 0;
+
+    private static int POSITIVE_FEEDBACK = 1;
 
     @Bind(R.id.feedback_text)
     EditText feedbackText;
@@ -30,10 +41,18 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Bind(R.id.feedback_button_positive)
     Button feedbackPositiveButton;
 
+    private FeedbackPresenter presenter;
+
+    private List<String> groups;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+        ButterKnife.bind(this);
+
+        presenter = MvpFactory.getPresenter(this);
+        initGroupSpinner();
     }
 
     @Override
@@ -45,7 +64,8 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == (R.id.action_submit)) {
-            //TODO submit
+            //TODO submit multimedia
+            presenter.sendFeedback(feedbackText.getText().toString());
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -53,28 +73,27 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     @OnClick(R.id.feedback_button_negative)
     protected void onClickButtonNegative() {
-        feedbackNegativeButton.setPressed(true);
-        feedbackNeutralButton.setPressed(false);
-        feedbackPositiveButton.setPressed(false);
+        presenter.changeFeedbackType(NEGATIVE_FEEDBACK);
     }
 
     @OnClick(R.id.feedback_button_neutral)
     protected void onClickButtonNeutral() {
-        feedbackNegativeButton.setPressed(false);
-        feedbackNeutralButton.setPressed(true);
-        feedbackPositiveButton.setPressed(false);
+        presenter.changeFeedbackType(NEUTRAL_FEEDBACK);
     }
 
     @OnClick(R.id.feedback_button_positive)
     protected void onClickButtonPositive() {
-        feedbackNegativeButton.setPressed(false);
-        feedbackNeutralButton.setPressed(false);
-        feedbackPositiveButton.setPressed(true);
+        presenter.changeFeedbackType(POSITIVE_FEEDBACK);
     }
 
     @Override
     public void onFeedbackSent() {
 
+    }
+
+    @Override
+    public void onGroupsReceived(List<String> groups) {
+        this.groups = groups;
     }
 
     @Override
@@ -90,5 +109,9 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void showError(@StringRes int error) {
         showErrorMessage(getResources().getString(error));
+    }
+
+    private void initGroupSpinner() {
+        presenter.getGroups();
     }
 }

@@ -1,6 +1,7 @@
 package hr.foi.challenge.challengeclient.mvp.interactors.impl;
 
 import hr.foi.challenge.challengeclient.models.Multimedia;
+import hr.foi.challenge.challengeclient.models.NewFeedback;
 import hr.foi.challenge.challengeclient.mvp.interactors.FeedbackInteractor;
 
 /**
@@ -8,9 +9,8 @@ import hr.foi.challenge.challengeclient.mvp.interactors.FeedbackInteractor;
  */
 public class FeedbackInteractorImpl implements FeedbackInteractor {
 
-
     @Override
-    public void sendFeedback(long projectID, long personID, Multimedia multimedia) {
+    public void sendFeedback(NewFeedback feedback, Multimedia multimedia) {
 
     }
 }
