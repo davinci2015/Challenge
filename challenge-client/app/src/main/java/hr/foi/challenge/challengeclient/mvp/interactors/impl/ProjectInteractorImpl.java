@@ -1,5 +1,7 @@
 package hr.foi.challenge.challengeclient.mvp.interactors.impl;
 
+import android.util.Log;
+
 import java.util.List;
 
 import hr.foi.challenge.challengeclient.models.Feedback;
@@ -26,6 +28,9 @@ public class ProjectInteractorImpl implements ProjectInteractor {
     private Callback<List<Feedback>> feedbackFetch = new Callback<List<Feedback>>() {
         @Override
         public void success(List<Feedback> feedbacks, Response response) {
+            for(Feedback f: feedbacks) {
+                Log.e("test.test", f.getText() + " " + f.getPerson());
+            }
             listener.onReceived(feedbacks);
         }
 
