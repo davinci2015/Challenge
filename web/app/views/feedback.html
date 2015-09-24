@@ -1,0 +1,27 @@
+<div class="container feedbackList">
+	<div class="row">
+		<div class="s12">
+			<div class="excel">
+				<img src="img/xlsx1.png" alt="excel" width="18" style="cursor:pointer;">
+				<a target="_self" ng-href="{{feedback.csv_link}}">
+					<span style="cursor:pointer;" ng-click="feedback.GenerateExcel()"><u> Download Excel</u></span>
+				</a>
+			</div>
+		</div>
+		<div class="s12">
+			<div ng-repeat="f in feedback.feedbackList">
+				<ul class="collection">
+					<li class="collection-item">
+						<div class="row">
+							<span class="feedbackSpan">{{$index+1}}.</span>
+							<h5><strong>{{f.text}}</strong></h5>
+							<span>{{f.person}}</span>
+							<br>
+							<span>{{f.date}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div
+</div>
