@@ -29,7 +29,6 @@ angular.module('application')
                 redirectTo: '/login'
             })
             .when('/home',{
-                resolve: {"check" : check},
                 controller: 'rank',
                 controllerAs: 'rank',
                 templateUrl: 'app/views/home.html'
