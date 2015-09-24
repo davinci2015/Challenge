@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
     private ProjectListView projectListView;
 
-    boolean flag;
+    private boolean flag;
 
     private ProjectListAdapter adapter;
 
@@ -48,6 +49,9 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
     @Bind(R.id.codeText)
     EditText code;
+
+    @Bind(R.id.code_layout)
+    LinearLayout codeLayout;
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -74,9 +78,18 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
     @Override
     public void onResume() {
         super.onResume();
+
         listView.setAdapter(null);
         listView.setOnItemClickListener(listListener);
+
         flag = this.getArguments().getBoolean("flag");
+
+        if (flag) {
+            codeLayout.setVisibility(View.GONE);
+        } else {
+            codeLayout.setVisibility(View.VISIBLE);
+        }
+
         presenter.loadProjects(flag);
     }
 
@@ -92,22 +105,27 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_project, container, false);
         ButterKnife.bind(this, view);
+
         return view;
     }
 
     @Override
     public void onReceived(List<Project> projectList) {
+        projectListView.hideProgress();
+
         adapter = new ProjectListAdapter(getContext(), projectList);
         listView.setAdapter(adapter);
     }
 
     @Override
     public void onReceivedFailed() {
+        projectListView.hideProgress();
         projectListView.onPostFetchFail();
     }
 
     @Override
     public void onReceivedEmpty() {
+        projectListView.hideProgress();
         projectListView.onPostFetchEmpty();
     }
 
@@ -126,18 +144,31 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
     @Override
     public void onCodeSuccess() {
-        // poziv
+        projectListView.hideProgress();
+        projectListView.showError(R.string.code_valid);
     }
 
     @Override
     public void onCodeFailed() {
+        projectListView.hideProgress();
+        projectListView.showError(R.string.code_error);
+    }
 
+    @Override
+    public void onCodeUsed() {
+        projectListView.hideProgress();
+        projectListView.showError(R.string.code_used);
+    }
+
+    @Override
+    public void showProgress() {
+        projectListView.showProgress();
     }
 
     @OnClick(R.id.submitCode)
     void submitCode() {
-        if(TextUtils.isEmpty(code.getText().toString())) {
-            // zovi activity da izbaci grešku
+        if (TextUtils.isEmpty(code.getText().toString())) {
+            projectListView.showError(R.string.code_empty_error);
         } else {
             presenter.sendCode(code.getText().toString());
         }

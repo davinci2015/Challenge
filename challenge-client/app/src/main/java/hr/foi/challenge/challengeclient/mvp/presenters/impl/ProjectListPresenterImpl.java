@@ -23,11 +23,13 @@ public class ProjectListPresenterImpl implements ProjectListPresenter {
 
     @Override
     public void loadProjects(boolean flag) {
+        view.showProgress();
         interactor.fetch(listener, flag);
     }
 
     @Override
     public void sendCode(String code) {
+        view.showProgress();
         interactor.send(listener, code);
     }
 
@@ -55,6 +57,11 @@ public class ProjectListPresenterImpl implements ProjectListPresenter {
         @Override
         public void onCodeFailed() {
             view.onCodeFailed();
+        }
+
+        @Override
+        public void onCodeUsed() {
+            view.onCodeUsed();
         }
     };
 

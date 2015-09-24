@@ -39,8 +39,6 @@ public class ProjectListActivity extends BaseActivity implements ProjectListView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
 
-
-
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

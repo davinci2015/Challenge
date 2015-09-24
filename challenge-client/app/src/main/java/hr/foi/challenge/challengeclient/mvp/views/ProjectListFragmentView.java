@@ -21,4 +21,7 @@ public interface ProjectListFragmentView {
 
     void onCodeFailed();
 
+    void onCodeUsed();
+
+    void showProgress();
 }

@@ -39,7 +39,8 @@ public interface FeedbackService {
     @GET("/challenge/get_groups.php")
     void fetchGroups(@Query("project_id")long id, Callback<List<Group>> callback);
 
-    @POST("/challenge/invintation.php")
-    void sendInviteCode(@Field("code") String code, Callback callback);
+    @FormUrlEncoded
+    @POST("/challenge/check_invite_code.php")
+    void sendInviteCode(@Field("code") String code, @Field("mail") String mail, Callback<String> callback);
 
 }

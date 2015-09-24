@@ -49,6 +49,11 @@
     <string name="action_add_feedback">Add</string>
     <string name="feedback_success">Feedback was sent successfully!</string>
 
-    <string name="something_wrong">Something went wrong.</string>
+    <string name="something_wrong">Something went wrong!</string>
+
+    <string name="code_empty_error">Please enter the invite code!</string>
+    <string name="code_error">Entered code is not valid!</string>
+    <string name="code_valid">You have successfully been added to the project!</string>
+    <string name="code_used">This code is already used!</string>
 
 </resources>
