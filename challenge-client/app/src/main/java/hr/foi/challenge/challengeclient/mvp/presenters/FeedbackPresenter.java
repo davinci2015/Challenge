@@ -5,7 +5,7 @@ package hr.foi.challenge.challengeclient.mvp.presenters;
  */
 public interface FeedbackPresenter {
 
-    void sendFeedback(String feedbackText);
+    void sendFeedback(String feedbackText, String groupName);
 
     void changeFeedbackType(int type);
 

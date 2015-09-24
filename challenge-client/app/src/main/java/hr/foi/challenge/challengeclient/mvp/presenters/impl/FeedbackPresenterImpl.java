@@ -32,9 +32,9 @@ public class FeedbackPresenterImpl implements FeedbackPresenter {
     }
 
     @Override
-    public void sendFeedback(String feedbackText) {
+    public void sendFeedback(String feedbackText, String groupName) {
         view.showProgress();
-        feedbackInteractor.sendFeedback(feedbackText, feedbackType, null, feedbackListener);
+        feedbackInteractor.sendFeedback(feedbackText, feedbackType, groupName, feedbackListener);
     }
 
     @Override

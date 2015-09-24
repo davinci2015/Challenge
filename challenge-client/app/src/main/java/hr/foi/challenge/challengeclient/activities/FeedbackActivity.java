@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,6 +44,8 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     private static int NEUTRAL_FEEDBACK = 0;
 
     private static int POSITIVE_FEEDBACK = 1;
+
+    boolean empty;
 
     @Bind(R.id.feedback_text)
     EditText feedbackText;
@@ -91,7 +95,9 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == (R.id.action_submit)) {
             //TODO submit multimedia
-            presenter.sendFeedback(feedbackText.getText().toString());
+            String groupName = "";
+            if(!empty) groupName = ((Group)feedbackGroupsSpinner.getSelectedItem()).getName();
+            presenter.sendFeedback(feedbackText.getText().toString(), groupName);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -122,8 +128,14 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         this.groups = groups;
 
 // use default spinner item to show options in spinner
-        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this,android.R.layout.simple_spinner_item,groups);
-        feedbackGroupsSpinner.setAdapter(adapter);
+        ArrayAdapter<Group> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,groups);
+        try {
+            feedbackGroupsSpinner.setAdapter(adapter);
+            empty = false;
+        } catch(Exception e) {
+            empty = true;
+            showErrorMessage("There are no groups for this project");
+        }
     }
 
     @Override
@@ -175,8 +187,8 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            onGroupsReceived(new Gson().fromJson(s, List.class));
+        protected void onPostExecute(String json) {
+            onGroupsReceived((List<Group>)new Gson().fromJson(json, new TypeToken<List<Group>>(){}.getType()));
         }
     }
 
