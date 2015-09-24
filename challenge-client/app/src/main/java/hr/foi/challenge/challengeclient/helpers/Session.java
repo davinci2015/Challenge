@@ -8,10 +8,6 @@ import android.content.SharedPreferences.Editor;
 
 import com.google.gson.Gson;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> be024b107441799280ddea9017320c7f24c02c42
 import hr.foi.challenge.challengeclient.activities.LoginActivity;
 import hr.foi.challenge.challengeclient.models.User;
 

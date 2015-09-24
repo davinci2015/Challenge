@@ -17,4 +17,8 @@ public interface ProjectListFragmentView {
 
     void onProjectSelected(long projectID);
 
+    void onCodeSuccess();
+
+    void onCodeFailed();
+
 }

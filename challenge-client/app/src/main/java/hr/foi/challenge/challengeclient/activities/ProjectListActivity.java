@@ -1,5 +1,7 @@
 package hr.foi.challenge.challengeclient.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -7,16 +9,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 
 import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.SectionsPagerAdapter;
 import hr.foi.challenge.challengeclient.helpers.Session;
-<<<<<<< HEAD
 import hr.foi.challenge.challengeclient.mvp.views.ProjectListView;
-=======
 import hr.foi.challenge.challengeclient.mvp.views.BaseView;
->>>>>>> be024b107441799280ddea9017320c7f24c02c42
 
 public class ProjectListActivity extends BaseActivity implements ProjectListView, ActionBar.TabListener {
 
@@ -87,14 +89,19 @@ public class ProjectListActivity extends BaseActivity implements ProjectListView
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+        hideSoftKeyboard(this);
     }
 
-<<<<<<< HEAD
-=======
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_project, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -117,7 +124,6 @@ public class ProjectListActivity extends BaseActivity implements ProjectListView
         showDialog("Sign out?", "SIGN OUT", "CANCEL", this);
     }
 
->>>>>>> be024b107441799280ddea9017320c7f24c02c42
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in

@@ -17,7 +17,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.challenge.challengeclient.R;
+import hr.foi.challenge.challengeclient.adapters.GroupAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
+import hr.foi.challenge.challengeclient.models.Group;
 import hr.foi.challenge.challengeclient.mvp.presenters.FeedbackPresenter;
 import hr.foi.challenge.challengeclient.mvp.views.FeedbackView;
 
@@ -46,7 +48,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     private FeedbackPresenter presenter;
 
-    private List<String> groups;
+    private List<Group> groups;
 
     private String selectedGroup;
 
@@ -57,7 +59,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         ButterKnife.bind(this);
 
         presenter = MvpFactory.getPresenter(this);
-        initGroupSpinner();
+        //initGroupSpinner();
     }
 
     @Override
@@ -97,7 +99,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     }
 
     @Override
-    public void onGroupsReceived(List<String> groups) {
+    public void onGroupsReceived(List<Group> groups) {
         this.groups = groups;
     }
 
@@ -119,10 +121,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     private void initGroupSpinner() {
         presenter.getGroups();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, groups);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        feedbackGroupsSpinner.setAdapter(adapter);
+        feedbackGroupsSpinner.setAdapter(new GroupAdapter(this, groups));
     }
 
     AdapterView.OnItemSelectedListener groupSpinnerListener = new AdapterView.OnItemSelectedListener() {

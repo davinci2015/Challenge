@@ -3,6 +3,7 @@ package hr.foi.challenge.challengeclient.mvp.presenters.impl;
 import java.util.List;
 
 import hr.foi.challenge.challengeclient.R;
+import hr.foi.challenge.challengeclient.models.Group;
 import hr.foi.challenge.challengeclient.mvp.interactors.FeedbackInteractor;
 import hr.foi.challenge.challengeclient.mvp.interactors.GroupInteractor;
 import hr.foi.challenge.challengeclient.mvp.listeners.FeedbackListener;
@@ -49,7 +50,7 @@ public class FeedbackPresenterImpl implements FeedbackPresenter {
 
     private GroupListener groupListener = new GroupListener() {
         @Override
-        public void groupsReceived(List<String> groups) {
+        public void groupsReceived(List<Group> groups) {
             view.hideProgress();
             view.onGroupsReceived(groups);
         }
