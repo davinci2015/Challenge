@@ -1,13 +1,12 @@
 package hr.foi.challenge.challengeclient.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,7 +23,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -31,7 +30,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
-import hr.foi.challenge.challengeclient.adapters.GroupAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
 import hr.foi.challenge.challengeclient.helpers.ServiceCaller;
 import hr.foi.challenge.challengeclient.helpers.Session;
@@ -56,13 +54,13 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     Spinner feedbackGroupsSpinner;
 
     @Bind(R.id.feedback_button_negative)
-    Button feedbackNegativeButton;
+    ImageButton feedbackNegativeButton;
 
     @Bind(R.id.feedback_button_neutral)
-    Button feedbackNeutralButton;
+    ImageButton feedbackNeutralButton;
 
     @Bind(R.id.feedback_button_positive)
-    Button feedbackPositiveButton;
+    ImageButton feedbackPositiveButton;
 
     @Bind(R.id.project_title)
     TextView projectTitle;
@@ -80,11 +78,13 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         ButterKnife.bind(this);
 
         presenter = MvpFactory.getPresenter(this);
-        //initGroupSpinner();
+
         showProgress();
         new GroupFetchTask().execute();
         hideProgress();
         projectTitle.setText(new Session(FeedbackApplication.getInstance()).retrieveProjectTitle());
+
+        imagesInit();
     }
 
     @Override
@@ -96,7 +96,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == (R.id.action_submit)) {
-            //TODO submit multimedia
+
             String groupName = "";
             if(!empty) groupName = ((Group)feedbackGroupsSpinner.getSelectedItem()).getName();
             presenter.sendFeedback(feedbackText.getText().toString(), groupName);
@@ -108,16 +108,34 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @OnClick(R.id.feedback_button_negative)
     protected void onClickButtonNegative() {
         presenter.changeFeedbackType(NEGATIVE_FEEDBACK);
+
+        feedbackNegativeButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.negative_touched));
+        feedbackNeutralButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.neutral_pristine));
+        feedbackPositiveButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.positive_pristine));
     }
 
     @OnClick(R.id.feedback_button_neutral)
     protected void onClickButtonNeutral() {
         presenter.changeFeedbackType(NEUTRAL_FEEDBACK);
+
+        feedbackNegativeButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.negative_pristine));
+        feedbackNeutralButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.neutral_touched));
+        feedbackPositiveButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.positive_pristine));
     }
 
     @OnClick(R.id.feedback_button_positive)
     protected void onClickButtonPositive() {
         presenter.changeFeedbackType(POSITIVE_FEEDBACK);
+
+        feedbackNegativeButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.negative_pristine));
+        feedbackNeutralButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.neutral_pristine));
+        feedbackPositiveButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.positive_touched));
+    }
+
+    private void imagesInit() {
+        feedbackNegativeButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.negative_pristine));
+        feedbackNeutralButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.neutral_pristine));
+        feedbackPositiveButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.positive_pristine));
     }
 
     @Override
@@ -153,12 +171,6 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void showError(@StringRes int error) {
         showErrorMessage(getResources().getString(error));
-    }
-
-    private void initGroupSpinner() {
-        presenter.getGroups();
-
-        feedbackGroupsSpinner.setAdapter(new GroupAdapter(this, groups));
     }
 
     AdapterView.OnItemSelectedListener groupSpinnerListener = new AdapterView.OnItemSelectedListener() {

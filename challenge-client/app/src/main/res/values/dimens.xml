@@ -14,4 +14,6 @@
     <dimen name="textbox_height">170dp</dimen>
 
     <dimen name="button_height">60dp</dimen>
+
+    <dimen name="feedback_image_size">80dp</dimen>
 </resources>
