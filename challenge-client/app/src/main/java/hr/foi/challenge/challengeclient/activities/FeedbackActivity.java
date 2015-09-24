@@ -1,16 +1,23 @@
 package hr.foi.challenge.challengeclient.activities;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -20,6 +27,7 @@ import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.GroupAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
+import hr.foi.challenge.challengeclient.helpers.ServiceCaller;
 import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.models.Group;
 import hr.foi.challenge.challengeclient.mvp.presenters.FeedbackPresenter;
@@ -65,7 +73,9 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
         presenter = MvpFactory.getPresenter(this);
         //initGroupSpinner();
-
+        showProgress();
+        new GroupFetchTask().execute();
+        hideProgress();
         projectTitle.setText(new Session(FeedbackApplication.getInstance()).retrieveProjectTitle());
     }
 
@@ -108,6 +118,10 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void onGroupsReceived(List<Group> groups) {
         this.groups = groups;
+
+// use default spinner item to show options in spinner
+        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this,android.R.layout.simple_spinner_item,groups);
+        feedbackGroupsSpinner.setAdapter(adapter);
     }
 
     @Override
@@ -142,4 +156,25 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
         }
     };
+
+    private class GroupFetchTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            String json = "";
+            try {
+                json = ServiceCaller.call(new URL("http://46.101.207.199/challenge/get_groups.php?project_id="
+                        + String.valueOf(new Session(FeedbackApplication.getInstance()).retrieveProjectID())), "GET");
+            } catch (IOException e) {
+                showErrorMessage("Service call fail");
+            }
+
+            return json;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            onGroupsReceived(new Gson().fromJson(s, List.class));
+        }
+    }
 }
