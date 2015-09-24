@@ -157,8 +157,9 @@ public class ProjectListActivity extends BaseActivity implements ProjectListView
     }
 
     @Override
-    public void onProjectSelected(long id) {
+    public void onProjectSelected(long id, String title) {
         new Session(FeedbackApplication.getInstance()).saveProjectID(id);
+        new Session(FeedbackApplication.getInstance()).saveProjectTitle(title);
         startActivity(new Intent(this, ProjectActivity.class));
     }
 }

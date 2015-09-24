@@ -6,19 +6,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.GroupAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
+import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.models.Group;
 import hr.foi.challenge.challengeclient.mvp.presenters.FeedbackPresenter;
 import hr.foi.challenge.challengeclient.mvp.views.FeedbackView;
@@ -46,6 +48,9 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Bind(R.id.feedback_button_positive)
     Button feedbackPositiveButton;
 
+    @Bind(R.id.project_title)
+    TextView projectTitle;
+
     private FeedbackPresenter presenter;
 
     private List<Group> groups;
@@ -60,6 +65,8 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
         presenter = MvpFactory.getPresenter(this);
         //initGroupSpinner();
+
+        projectTitle.setText(new Session(FeedbackApplication.getInstance()).retrieveProjectTitle());
     }
 
     @Override

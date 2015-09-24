@@ -22,8 +22,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/spacing_default"
-                android:textSize="@dimen/text_size_standard"
-                android:text="Title"/>
+                android:textSize="@dimen/text_size_standard_large"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/feedback_text"

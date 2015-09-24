@@ -53,6 +53,15 @@ public class Session {
         editor.commit();
     }
 
+    public void saveProjectTitle(String title) {
+        editor.putString("project_title", title);
+        editor.commit();
+    }
+
+    public String retrieveProjectTitle() {
+        return preferences.getString("project_title", null);
+    }
+
     public long retrieveProjectID() {
         return preferences.getLong("project_id", 0);
     }
