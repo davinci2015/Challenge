@@ -1,0 +1,15 @@
+<div ng-controller='myProjects' class="container">
+	<div class="row">
+		<div class="s12">
+			<div ng-repeat="p in projects.projectList">
+				<div class="collection">
+					<a ng-href="#/feedback/{{p.id}}" class="collection-item">
+						<h3><strong>{{p.name}}</strong></h3>
+						<p><strong>Description:</strong> {{p.description}}</p>
+						<p><strong>Date:</strong> {{p.date}}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

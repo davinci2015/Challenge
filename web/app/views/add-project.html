@@ -1,0 +1,68 @@
+<br><br>
+<div ng-controller="addProject" class="container">
+	<div class="row">
+		<div class="s12">
+			<form>
+				<div class="row">
+					<div class="input-field col s12">
+						<input ng-model="project.projectName" id="name" type="text" class="validate">
+						<label for="name">Project name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input ng-model="project.projectDesc" id="description" type="text" class="validate">
+						<label for="description">Project description</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<p>Project type:</p>
+						<p>
+							<input ng-model="project.public" name="projectType" type="radio" id="public" value="true"/>
+							<label for="public">Public project</label>
+						</p>
+						<p>
+							<input ng-model="project.public" name="projectType" type="radio" id="private" value="false"/>
+							<label for="private">Private project</label>
+						</p>
+					</div>
+				</div>
+				<div class="row" ng-show="project.checkVisibility()">
+					<div class="input-field col s12">
+						<p>Private project type:</p>
+						<p>
+							<input ng-model="project.privateOpen" name="privateType" type="radio" id="privateOpen" value="privateOpen"/>
+							<label for="privateOpen">Open private project</label>
+						</p>
+						<p>
+							<input ng-model="project.privateOpen" name="privateType" type="radio" id="privateClosed" value="privateClosed"/>
+							<label for="privateClosed">Close private project</label>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<div ng-repeat="g in project.projectData">
+							<input type="text" ng-model="g.groupName" placeholder="Feedback group" class="validate">
+						</div>
+					</div>
+					<a ng-click="project.AddGroup()" style="cursor:pointer">
+						<span><i class="material-icons">add</i>Add feedback group</span>
+					</a>
+				</div>
+				<div class="row" ng-show="project.checkVisibility()">
+					<div class="input-field col s12">
+						<input ng-model="project.email" id="invite" type="text" class="validate">
+						<label for="invite">Invite users - enter their email:</label>
+					</div>
+				</div>
+				<br><br>
+				<button ng-click="project.AddProject()" class="btn waves-effect waves-light" name="action">Submit
+				<i class="material-icons right">send</i>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+<br><br>
