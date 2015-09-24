@@ -1,7 +1,5 @@
 package hr.foi.challenge.challengeclient.mvp.interactors.impl;
 
-import android.util.Log;
-
 import java.util.List;
 
 import hr.foi.challenge.challengeclient.FeedbackApplication;
@@ -9,7 +7,6 @@ import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.models.Project;
 import hr.foi.challenge.challengeclient.mvp.interactors.ProjectListInteractor;
 import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListListener;
-import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListener;
 import hr.foi.challenge.challengeclient.network.ApiManager;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -19,6 +16,8 @@ import retrofit.client.Response;
  * Created by Tomislav Turek on 23.09.15..
  */
 public class ProjectListInteractorImpl implements ProjectListInteractor {
+
+    private static final int ERROR_CODE = 410;
 
     ProjectListListener listener;
 
@@ -35,7 +34,9 @@ public class ProjectListInteractorImpl implements ProjectListInteractor {
     @Override
     public void send(ProjectListListener listener, String code) {
         this.listener = listener;
-        ApiManager.getService().sendInviteCode(code, callback);
+
+        String mail = new Session(FeedbackApplication.getInstance()).retrieveSession().getMail();
+        ApiManager.getService().sendInviteCode(code, mail, callback);
     }
 
     private Callback<List<Project>> projectFetch = new Callback<List<Project>>() {
@@ -50,15 +51,20 @@ public class ProjectListInteractorImpl implements ProjectListInteractor {
         }
     };
 
-    private Callback callback = new Callback() {
+    private Callback<String> callback = new Callback<String>() {
+
         @Override
-        public void success(Object o, Response response) {
+        public void success(String s, Response response) {
             listener.onCodeSuccess();
         }
 
         @Override
         public void failure(RetrofitError error) {
-            listener.onCodeFailed();
+            if (error.getResponse().getStatus() == ERROR_CODE) {
+                listener.onCodeUsed();
+            } else {
+                listener.onCodeFailed();
+            }
         }
     };
 

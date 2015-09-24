@@ -15,5 +15,6 @@ public interface ProjectListListener {
 
     void onCodeSuccess();
     void onCodeFailed();
+    void onCodeUsed();
 
 }
