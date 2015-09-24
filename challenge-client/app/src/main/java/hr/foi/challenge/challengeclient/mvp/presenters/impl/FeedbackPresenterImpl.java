@@ -66,7 +66,7 @@ public class FeedbackPresenterImpl implements FeedbackPresenter {
         @Override
         public void onSendSucess() {
             view.hideProgress();
-            view.showError(R.string.feedback_sent);
+            view.onFeedbackSent();
         }
 
         @Override

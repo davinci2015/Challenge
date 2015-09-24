@@ -6,6 +6,7 @@ import android.support.annotation.StringRes;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class ProjectActivity extends BaseActivity implements ProjectView {
     @Bind(R.id.feedback_list_view)
     ListView view;
 
+    @Bind(R.id.project_description)
+    TextView projectDescription;
+
     ProjectPresenter presenter;
 
     @Override
@@ -32,12 +36,11 @@ public class ProjectActivity extends BaseActivity implements ProjectView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
 
-        //view = (ListView) findViewById(R.id.listView);
         ButterKnife.bind(this);
 
         presenter = MvpFactory.getPresenter(this);
 
-        presenter.loadFeedback(new Session(FeedbackApplication.getInstance()).retrieveProjectID());
+        projectDescription.setText(new Session(FeedbackApplication.getInstance()).retrieveProjectDescription());
     }
 
     @Override
@@ -51,6 +54,7 @@ public class ProjectActivity extends BaseActivity implements ProjectView {
     protected void onResume() {
         super.onResume();
 
+        presenter.loadFeedback(new Session(FeedbackApplication.getInstance()).retrieveProjectID());
     }
 
     @Override

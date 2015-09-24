@@ -47,8 +47,7 @@
     <string name="groups_error">Something went wrong! Groups not received.</string>
 
     <string name="action_add_feedback">Add</string>
-
-    <string name="feedback_sent">Feedback sent!</string>
+    <string name="feedback_success">Feedback was sent successfully!</string>
 
     <string name="something_wrong">Something went wrong.</string>
 
