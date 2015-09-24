@@ -26,8 +26,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Bind(R.id.username) EditText username;
     @Bind(R.id.password) EditText password;
 
-    @Bind(R.id.test_btn) Button btn;
-
     LoginPresenter presenter;
 
     @Override
@@ -37,11 +35,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
         ButterKnife.bind(this);
         presenter = MvpFactory.getPresenter(this);
-    }
-
-    @OnClick(R.id.test_btn)
-    protected void onClickBtn() {
-        startActivity(new Intent(this, FeedbackActivity.class));
     }
 
     @OnClick(R.id.sign_in_button)
