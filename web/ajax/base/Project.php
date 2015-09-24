@@ -56,8 +56,7 @@ class Project
 				$query = "INSERT INTO invitation VALUES ('$email', $this->id, 0)";
 				$DB->updateDB($query);
 				$body = "Give feedback on our project! Project CODE -> " . $randString;
-				echo $body;
-				//$this->SendMail($email, $body);
+				$this->SendMail($email, $body);
 			}
 			foreach($this->emailNoreg as $email)
 			{
