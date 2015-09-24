@@ -37,7 +37,7 @@ public class BaseActivity extends AppCompatActivity {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
 
         View snackView = snackbar.getView();
-        snackView.setBackgroundColor(getResources().getColor(R.color.login_button_pressed));
+        snackView.setBackgroundColor(getResources().getColor(R.color.foundation));
 
         snackbar.show();
     }

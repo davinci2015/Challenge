@@ -39,6 +39,7 @@
         <activity
             android:name=".activities.ProjectListActivity"
             android:label="@string/title_activity_project"
+            android:theme="@style/ActionTheme"
             android:parentActivityName=".activities.BaseActivity"
             android:screenOrientation="portrait"
             android:uiOptions="splitActionBarWhenNarrow" >
@@ -54,6 +55,7 @@
         <activity
             android:name=".activities.ProjectActivity"
             android:label="@string/title_activity_project"
+            android:theme="@style/ActionTheme"
             android:parentActivityName=".activities.BaseActivity"
             android:screenOrientation="portrait" >
             <meta-data
