@@ -1,8 +1,8 @@
 package hr.foi.challenge.challengeclient.activities;
 
-import android.support.annotation.StringRes;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -11,15 +11,18 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.ProjectAdapter;
+import hr.foi.challenge.challengeclient.helpers.MvpFactory;
+import hr.foi.challenge.challengeclient.helpers.Session;
 import hr.foi.challenge.challengeclient.models.Feedback;
 import hr.foi.challenge.challengeclient.mvp.presenters.ProjectPresenter;
 import hr.foi.challenge.challengeclient.mvp.views.ProjectView;
 
 public class ProjectActivity extends BaseActivity implements ProjectView {
 
-    @Bind(R.id.listView)
+    @Bind(R.id.feedback_list_view)
     ListView view;
 
     ProjectPresenter presenter;
@@ -29,7 +32,12 @@ public class ProjectActivity extends BaseActivity implements ProjectView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_details);
 
+        //view = (ListView) findViewById(R.id.listView);
         ButterKnife.bind(this);
+
+        presenter = MvpFactory.getPresenter(this);
+
+        presenter.loadFeedback(new Session(FeedbackApplication.getInstance()).retrieveProjectID());
     }
 
     @Override
@@ -42,7 +50,7 @@ public class ProjectActivity extends BaseActivity implements ProjectView {
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.loadFeedback(getIntent().getExtras().getInt("project"));
+
     }
 
     @Override
@@ -53,7 +61,8 @@ public class ProjectActivity extends BaseActivity implements ProjectView {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_add_feedback) {
+            startActivity(new Intent(this, FeedbackActivity.class));
             return true;
         }
 

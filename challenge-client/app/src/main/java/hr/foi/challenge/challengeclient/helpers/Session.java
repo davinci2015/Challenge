@@ -8,7 +8,10 @@ import android.content.SharedPreferences.Editor;
 
 import com.google.gson.Gson;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 import hr.foi.challenge.challengeclient.activities.LoginActivity;
 import hr.foi.challenge.challengeclient.models.User;
 
@@ -47,6 +50,15 @@ public class Session {
      */
     public User retrieveSession() {
         return new Gson().fromJson(preferences.getString("user", null), User.class);
+    }
+
+    public void saveProjectID(long id) {
+        editor.putLong("project_id", id);
+        editor.commit();
+    }
+
+    public long retrieveProjectID() {
+        return preferences.getLong("project_id", 0);
     }
 
     /**

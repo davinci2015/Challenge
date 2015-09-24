@@ -5,5 +5,5 @@ package hr.foi.challenge.challengeclient.mvp.presenters;
  */
 public interface ProjectPresenter {
 
-    void loadFeedback(int projectId);
+    void loadFeedback(long projectId);
 }

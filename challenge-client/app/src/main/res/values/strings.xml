@@ -44,4 +44,12 @@
 
     <string name="action_submit">Submit</string>
 
+    <string name="groups_error">Something went wrong! Groups not received.</string>
+
+    <string name="action_add_feedback">Add</string>
+
+    <string name="feedback_sent">Feedback sent!</string>
+
+    <string name="something_wrong">Something went wrong.</string>
+
 </resources>

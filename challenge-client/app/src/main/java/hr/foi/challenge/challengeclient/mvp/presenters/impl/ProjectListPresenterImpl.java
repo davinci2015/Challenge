@@ -6,17 +6,17 @@ import hr.foi.challenge.challengeclient.models.Project;
 import hr.foi.challenge.challengeclient.mvp.interactors.ProjectListInteractor;
 import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListListener;
 import hr.foi.challenge.challengeclient.mvp.presenters.ProjectListPresenter;
-import hr.foi.challenge.challengeclient.mvp.views.ProjectListView;
+import hr.foi.challenge.challengeclient.mvp.views.ProjectListFragmentView;
 
 /**
  * Created by Tomislav Turek on 23.09.15..
  */
 public class ProjectListPresenterImpl implements ProjectListPresenter {
 
-    ProjectListView view;
+    ProjectListFragmentView view;
     ProjectListInteractor interactor;
 
-    public ProjectListPresenterImpl(ProjectListView view, ProjectListInteractor interactor) {
+    public ProjectListPresenterImpl(ProjectListFragmentView view, ProjectListInteractor interactor) {
         this.view = view;
         this.interactor = interactor;
     }

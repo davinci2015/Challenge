@@ -7,6 +7,6 @@ import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListener;
  */
 public interface ProjectInteractor {
 
-    void fetch(ProjectListener listener, int projectId);
+    void fetch(ProjectListener listener, long projectId);
 
 }

@@ -1,20 +1,24 @@
 package hr.foi.challenge.challengeclient.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.view.Menu;
-import android.view.MenuItem;
 
+import hr.foi.challenge.challengeclient.FeedbackApplication;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.SectionsPagerAdapter;
 import hr.foi.challenge.challengeclient.helpers.Session;
+<<<<<<< HEAD
+import hr.foi.challenge.challengeclient.mvp.views.ProjectListView;
+=======
 import hr.foi.challenge.challengeclient.mvp.views.BaseView;
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 
-public class ProjectListActivity extends BaseActivity implements BaseView, ActionBar.TabListener {
+public class ProjectListActivity extends BaseActivity implements ProjectListView, ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -85,6 +89,8 @@ public class ProjectListActivity extends BaseActivity implements BaseView, Actio
         }
     }
 
+<<<<<<< HEAD
+=======
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -111,6 +117,7 @@ public class ProjectListActivity extends BaseActivity implements BaseView, Actio
         showDialog("Sign out?", "SIGN OUT", "CANCEL", this);
     }
 
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
@@ -139,5 +146,21 @@ public class ProjectListActivity extends BaseActivity implements BaseView, Actio
     @Override
     public void showError(@StringRes int error) {
         showErrorMessage(getResources().getString(error));
+    }
+
+    @Override
+    public void onPostFetchFail() {
+
+    }
+
+    @Override
+    public void onPostFetchEmpty() {
+
+    }
+
+    @Override
+    public void onProjectSelected(long id) {
+        new Session(FeedbackApplication.getInstance()).saveProjectID(id);
+        startActivity(new Intent(this, ProjectActivity.class));
     }
 }

@@ -28,7 +28,7 @@ public class ProjectAdapter extends ArrayAdapter<Feedback> {
         ViewHolder holder;
 
         if(convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_project, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_feedback, parent, false);
             holder = new ViewHolder(convertView);
         } else {
             holder = (ViewHolder) convertView.getTag();

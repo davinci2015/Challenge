@@ -22,7 +22,7 @@ public class ProjectPresenterImpl implements ProjectPresenter {
     }
 
     @Override
-    public void loadFeedback(int projectId) {
+    public void loadFeedback(long projectId) {
         interactor.fetch(listener, projectId);
     }
 
