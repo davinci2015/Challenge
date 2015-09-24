@@ -2,26 +2,16 @@ package hr.foi.challenge.challengeclient.activities;
 
 import android.os.Bundle;
 import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.Locale;
 
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.SectionsPagerAdapter;
-import hr.foi.challenge.challengeclient.fragments.ProjectFragment;
 import hr.foi.challenge.challengeclient.mvp.views.BaseView;
-import hr.foi.challenge.challengeclient.mvp.views.ProjectListView;
 
 public class ProjectListActivity extends BaseActivity implements BaseView, ActionBar.TabListener {
 

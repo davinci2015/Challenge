@@ -3,6 +3,7 @@ package hr.foi.challenge.challengeclient.network;
 import java.util.List;
 
 import hr.foi.challenge.challengeclient.models.Credentials;
+import hr.foi.challenge.challengeclient.models.Feedback;
 import hr.foi.challenge.challengeclient.models.Project;
 import hr.foi.challenge.challengeclient.models.User;
 import retrofit.Callback;
@@ -27,5 +28,8 @@ public interface FeedbackService {
 
     @GET("/challenge/get_projects_data.php")
     void fetchProjects(@Query("mail") String mail, Callback<List<Project>> callback);
+
+    @GET("/challenge/get_feedback.php")
+    void fetchFeedbacks(@Query("project_id") long id, Callback<List<Feedback>> callback);
 
 }

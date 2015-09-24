@@ -42,6 +42,14 @@
             android:name=".activities.FeedbackActivity"
             android:label="@string/title_activity_feedback" >
         </activity>
+        <activity
+            android:name=".activities.ProjectActivity"
+            android:label="@string/title_activity_project"
+            android:parentActivityName=".activities.BaseActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
+        </activity>
     </application>
 
 </manifest>

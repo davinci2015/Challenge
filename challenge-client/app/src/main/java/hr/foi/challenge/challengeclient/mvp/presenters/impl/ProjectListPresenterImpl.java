@@ -1,7 +1,5 @@
 package hr.foi.challenge.challengeclient.mvp.presenters.impl;
 
-import android.util.Log;
-
 import java.util.List;
 
 import hr.foi.challenge.challengeclient.models.Project;
