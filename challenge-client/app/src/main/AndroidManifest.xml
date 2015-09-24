@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-feature android:name="android.hardware.camera"></uses-feature>
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:name=".FeedbackApplication"
@@ -16,9 +17,9 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,35 +29,39 @@
         </activity>
         <activity
             android:name=".activities.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_register" >
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
         </activity>
         <activity
             android:name=".activities.ProjectListActivity"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_project"
-            android:uiOptions="splitActionBarWhenNarrow"
-            android:parentActivityName=".activities.BaseActivity" >
+            android:parentActivityName=".activities.BaseActivity"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
         </activity>
         <activity
             android:name=".activities.FeedbackActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_feedback" >
+            android:label="@string/title_activity_feedback"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.ProjectActivity"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_project"
-            android:parentActivityName=".activities.BaseActivity" >
+            android:parentActivityName=".activities.BaseActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="hr.foi.challenge.challengeclient.activities.BaseActivity" />
+        </activity>
+        <activity
+            android:name=".activities.RankActivity"
+            android:label="@string/title_activity_rank" >
         </activity>
     </application>
 
