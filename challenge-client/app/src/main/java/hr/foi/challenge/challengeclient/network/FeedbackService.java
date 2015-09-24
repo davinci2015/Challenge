@@ -2,7 +2,6 @@ package hr.foi.challenge.challengeclient.network;
 
 import java.util.List;
 
-import hr.foi.challenge.challengeclient.models.Credentials;
 import hr.foi.challenge.challengeclient.models.Feedback;
 import hr.foi.challenge.challengeclient.models.Project;
 import hr.foi.challenge.challengeclient.models.User;
@@ -26,10 +25,17 @@ public interface FeedbackService {
     @POST("/challenge/register.php")
     void userRegistration(@Field("obj")String user, Callback<User> userCallback);
 
+    @FormUrlEncoded
+    @POST("/challenge/send_feedback.php")
+    void sendFeedback(@Field("project_id") long id, @Field("obj")String feedback, Callback<String> callback);
+
     @GET("/challenge/get_projects_data.php")
     void fetchProjects(@Query("mail") String mail, Callback<List<Project>> callback);
 
     @GET("/challenge/get_feedback.php")
     void fetchFeedbacks(@Query("project_id") long id, Callback<List<Feedback>> callback);
+
+    @GET("/challenge/get_groups.php")
+    void fetchGroups(@Query("project_id")long id, Callback<List<String>> callback);
 
 }

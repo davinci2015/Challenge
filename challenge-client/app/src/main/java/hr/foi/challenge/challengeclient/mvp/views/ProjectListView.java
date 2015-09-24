@@ -1,16 +1,13 @@
 package hr.foi.challenge.challengeclient.mvp.views;
 
-import java.util.List;
-
-import hr.foi.challenge.challengeclient.models.Project;
-
 /**
- * Created by Tomislav Turek on 23.09.15..
+ * Created by igor on 9/24/15.
  */
-public interface ProjectListView {
+public interface ProjectListView extends BaseView {
 
-    void onReceived(List<Project> projectList);
-    void onReceivedFailed();
-    void onReceivedEmpty();
+    void onPostFetchFail();
 
+    void onPostFetchEmpty();
+
+    void onProjectSelected(long id);
 }

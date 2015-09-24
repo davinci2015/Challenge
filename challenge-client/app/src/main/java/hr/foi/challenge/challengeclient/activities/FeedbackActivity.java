@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,7 +21,7 @@ import hr.foi.challenge.challengeclient.helpers.MvpFactory;
 import hr.foi.challenge.challengeclient.mvp.presenters.FeedbackPresenter;
 import hr.foi.challenge.challengeclient.mvp.views.FeedbackView;
 
-class FeedbackActivity extends BaseActivity implements FeedbackView {
+public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     private static int NEGATIVE_FEEDBACK = -1;
 
@@ -30,7 +33,7 @@ class FeedbackActivity extends BaseActivity implements FeedbackView {
     EditText feedbackText;
 
     @Bind(R.id.feedback_group_spinner)
-    Spinner feedbackGroups;
+    Spinner feedbackGroupsSpinner;
 
     @Bind(R.id.feedback_button_negative)
     Button feedbackNegativeButton;
@@ -44,6 +47,8 @@ class FeedbackActivity extends BaseActivity implements FeedbackView {
     private FeedbackPresenter presenter;
 
     private List<String> groups;
+
+    private String selectedGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,5 +118,22 @@ class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     private void initGroupSpinner() {
         presenter.getGroups();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, groups);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        feedbackGroupsSpinner.setAdapter(adapter);
     }
+
+    AdapterView.OnItemSelectedListener groupSpinnerListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            selectedGroup = (String) parent.getItemAtPosition(position);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
 }

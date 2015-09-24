@@ -18,7 +18,7 @@ public class ProjectInteractorImpl implements ProjectInteractor {
     ProjectListener listener;
 
     @Override
-    public void fetch(ProjectListener listener, int projectId) {
+    public void fetch(ProjectListener listener, long projectId) {
         this.listener = listener;
         ApiManager.getService().fetchFeedbacks(projectId, feedbackFetch);
     }

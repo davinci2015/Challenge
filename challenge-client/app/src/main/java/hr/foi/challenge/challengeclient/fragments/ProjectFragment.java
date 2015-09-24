@@ -4,11 +4,13 @@ package hr.foi.challenge.challengeclient.fragments;
  * Created by Tomislav Turek on 23.09.15..
  */
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -20,16 +22,23 @@ import hr.foi.challenge.challengeclient.adapters.ProjectListAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
 import hr.foi.challenge.challengeclient.models.Project;
 import hr.foi.challenge.challengeclient.mvp.presenters.ProjectListPresenter;
+import hr.foi.challenge.challengeclient.mvp.views.ProjectListFragmentView;
 import hr.foi.challenge.challengeclient.mvp.views.ProjectListView;
 
-public class ProjectFragment extends Fragment implements ProjectListView {
+public class ProjectFragment extends Fragment implements ProjectListFragmentView {
     /**
      * The fragment argument representing the section number for this
      * fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+
     private ProjectListPresenter presenter;
+
+    private ProjectListView projectListView;
+
     boolean flag;
+
+    private ProjectListAdapter adapter;
 
     @Bind(R.id.listView) ListView listView;
 
@@ -59,8 +68,16 @@ public class ProjectFragment extends Fragment implements ProjectListView {
     public void onResume() {
         super.onResume();
         listView.setAdapter(null);
+        listView.setOnItemClickListener(listListener);
         flag = this.getArguments().getBoolean("flag");
         presenter.loadProjects(flag);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        projectListView = (ProjectListView) activity;
     }
 
     @Override
@@ -73,16 +90,29 @@ public class ProjectFragment extends Fragment implements ProjectListView {
 
     @Override
     public void onReceived(List<Project> projectList) {
-        listView.setAdapter(new ProjectListAdapter(getContext(), projectList));
+        adapter = new ProjectListAdapter(getContext(), projectList);
+        listView.setAdapter(adapter);
     }
 
     @Override
     public void onReceivedFailed() {
-
+        projectListView.onPostFetchFail();
     }
 
     @Override
     public void onReceivedEmpty() {
-
+        projectListView.onPostFetchEmpty();
     }
+
+    @Override
+    public void onProjectSelected(long projectID) {
+        projectListView.onProjectSelected(projectID);
+    }
+
+    ListView.OnItemClickListener listListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            onProjectSelected(adapter.getItem(position).getId());
+        }
+    };
 }
