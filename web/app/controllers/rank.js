@@ -7,5 +7,7 @@ angular.module('application')
 				controller.rankList = data;
 				console.log(data);
 			})
-
+		controller.isActive = function(){
+			return $rootScope.loggedIn;
+		}
 	}]);
