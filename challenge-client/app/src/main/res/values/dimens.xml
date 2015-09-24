@@ -12,4 +12,6 @@
     <dimen name="text_size_standard_large">18sp</dimen>
 
     <dimen name="textbox_height">170dp</dimen>
+
+    <dimen name="button_height">60dp</dimen>
 </resources>

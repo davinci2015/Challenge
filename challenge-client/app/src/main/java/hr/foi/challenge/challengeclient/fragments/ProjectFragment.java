@@ -5,6 +5,7 @@ package hr.foi.challenge.challengeclient.fragments;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,6 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hr.foi.challenge.challengeclient.R;
+import hr.foi.challenge.challengeclient.activities.RankActivity;
 import hr.foi.challenge.challengeclient.adapters.ProjectListAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
 import hr.foi.challenge.challengeclient.models.Project;
@@ -52,6 +55,9 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
     @Bind(R.id.code_layout)
     LinearLayout codeLayout;
+
+    @Bind(R.id.rank_button)
+    Button rankButton;
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -86,8 +92,10 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
         if (flag) {
             codeLayout.setVisibility(View.GONE);
+            rankButton.setVisibility(View.VISIBLE);
         } else {
             codeLayout.setVisibility(View.VISIBLE);
+            rankButton.setVisibility(View.GONE);
         }
 
         presenter.loadProjects(flag);
@@ -107,6 +115,11 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
         ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @OnClick(R.id.rank_button)
+    protected void onClickRank() {
+        startActivity(new Intent(getActivity(), RankActivity.class));
     }
 
     @Override
@@ -146,6 +159,7 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
     public void onCodeSuccess() {
         projectListView.hideProgress();
         projectListView.showError(R.string.code_valid);
+        onResume();
     }
 
     @Override

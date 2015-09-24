@@ -57,4 +57,7 @@
     <string name="code_valid">You have successfully been added to the project!</string>
     <string name="code_used">This code is already used!</string>
 
+    <string name="ranking">Ranking</string>
+    <string name="title_activity_rank">RankActivity</string>
+
 </resources>
