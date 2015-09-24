@@ -15,4 +15,21 @@
 
   </style>
 
+  <style name="ActionTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="android:actionBarStyle">@style/ActionBar</item>
+    <item name="actionBarStyle">@style/ActionBar</item>
+    <item name="android:actionBarTabStyle">@style/ActionTab</item>
+    <item name="android:actionBarTabBarStyle">@style/ActionTab</item>
+  </style>
+
+  <style name="ActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+    <item name="android:background">@color/foundation</item>
+    <item name="background">@color/foundation</item>
+  </style>
+
+  <style name="ActionTab">
+    <item name="android:background">@color/foundation</item>
+    <item name="background">@color/foundation</item>
+  </style>
+
 </resources>

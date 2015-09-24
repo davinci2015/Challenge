@@ -1,6 +1,7 @@
 package hr.foi.challenge.challengeclient.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -86,6 +87,7 @@ public class ProjectListActivity extends BaseActivity implements ProjectListView
         }
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
 
     @Override
