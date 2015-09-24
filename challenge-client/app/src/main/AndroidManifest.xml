@@ -29,6 +29,7 @@
         <activity
             android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/ActionTheme"
             android:label="@string/title_activity_register" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
