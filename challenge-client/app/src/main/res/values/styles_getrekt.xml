@@ -5,7 +5,9 @@
 
   <style name="EditTextgetRekt" parent="android:Widget.EditText">
 	  <item name="android:background">@drawable/getrekt_edit_text_holo_light</item>
-	  <item name="android:textColor">#000000</item>
+	  <item name="android:textColor">@color/foundation</item>
+      <item name="colorAccent">@color/foundation</item>
+      <item name="android:textColorHint">@color/foundation</item>
   </style>
 
   <style name="SpinnergetRekt" parent="android:Widget.Spinner">
