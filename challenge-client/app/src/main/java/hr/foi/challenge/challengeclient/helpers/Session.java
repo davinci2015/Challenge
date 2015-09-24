@@ -66,6 +66,15 @@ public class Session {
         return preferences.getLong("project_id", 0);
     }
 
+    public void saveProjectDescription(String desc) {
+        editor.putString("project_desc", desc);
+        editor.commit();
+    }
+
+    public String retrieveProjectDescription() {
+        return preferences.getString("project_desc", null);
+    }
+
     /**
      * Destroys current session (logs out employee)
      */

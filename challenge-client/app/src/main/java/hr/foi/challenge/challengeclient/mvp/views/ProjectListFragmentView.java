@@ -15,7 +15,7 @@ public interface ProjectListFragmentView {
 
     void onReceivedEmpty();
 
-    void onProjectSelected(long projectID, String title);
+    void onProjectSelected(long projectID, String title, String description);
 
     void onCodeSuccess();
 

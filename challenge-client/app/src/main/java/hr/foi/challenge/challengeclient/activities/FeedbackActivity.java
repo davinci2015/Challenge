@@ -1,8 +1,10 @@
 package hr.foi.challenge.challengeclient.activities;
 
 import android.os.AsyncTask;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -112,7 +114,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     @Override
     public void onFeedbackSent() {
-
+        showSuccessDialog();
     }
 
     @Override
@@ -176,5 +178,22 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         protected void onPostExecute(String s) {
             onGroupsReceived(new Gson().fromJson(s, List.class));
         }
+    }
+
+    private void showSuccessDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.registration_success_title))
+                .setMessage(getString(R.string.feedback_success))
+                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onEndActivity();
+                    }
+                })
+                .show();
+    }
+
+    private void onEndActivity() {
+        finish();
     }
 }

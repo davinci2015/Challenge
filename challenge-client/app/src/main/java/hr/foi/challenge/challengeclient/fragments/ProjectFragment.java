@@ -112,14 +112,15 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
     }
 
     @Override
-    public void onProjectSelected(long projectID, String title) {
-        projectListView.onProjectSelected(projectID, title);
+    public void onProjectSelected(long projectID, String title, String description) {
+        projectListView.onProjectSelected(projectID, title, description);
     }
 
     ListView.OnItemClickListener listListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            onProjectSelected(adapter.getItem(position).getId(), adapter.getItem(position).getName());
+            Project project = adapter.getItem(position);
+            onProjectSelected(project.getId(), project.getName(), project.getDescription());
         }
     };
 

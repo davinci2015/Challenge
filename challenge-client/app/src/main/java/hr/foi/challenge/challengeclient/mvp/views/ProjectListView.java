@@ -9,5 +9,5 @@ public interface ProjectListView extends BaseView {
 
     void onPostFetchEmpty();
 
-    void onProjectSelected(long id, String title);
+    void onProjectSelected(long id, String title, String description);
 }
