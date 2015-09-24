@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th data-field="id">Name</th>
-        <th data-field="id">Email</th>
-        <th data-field="id">Skype</th>
+        <th ng-show="rank.isActive()" data-field="id">Email</th>
+        <th ng-show="rank.isActive()" data-field="id">Skype</th>
         <th data-field="name">Feedbacks left</th>
         <th data-field="price">Rank</th>
       </tr>
@@ -12,9 +12,9 @@
     <tbody>
       <tr ng-repeat="d in rank.rankList">
         <td>{{d.Person}}</td>
-        <td><a ng-href="mailto:{{d.Mail}}" target="_top">{{d.Mail}}</a></td>
-        <td>{{d.Skype}}</td>
-        <td>{{d.Rank/10}}</td>
+        <td ng-show="rank.isActive()"><a ng-href="mailto:{{d.Mail}}" target="_top">{{d.Mail}}</a></td>
+        <td ng-show="rank.isActive()">{{d.Skype}}</td>
+        <td>{{d.Rank}}</td>
         <td><strong>{{$index+1}}</strong></td>
       </tr>
     </tbody>
