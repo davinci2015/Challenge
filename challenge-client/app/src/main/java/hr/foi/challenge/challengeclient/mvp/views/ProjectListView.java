@@ -9,5 +9,11 @@ public interface ProjectListView extends BaseView {
 
     void onPostFetchEmpty();
 
+<<<<<<< HEAD
     void onProjectSelected(long id);
+=======
+    void onCodeSuccess();
+    void onCodeFailed();
+
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 }

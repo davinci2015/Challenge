@@ -8,5 +8,6 @@ import hr.foi.challenge.challengeclient.mvp.listeners.ProjectListListener;
 public interface ProjectListInteractor {
 
     void fetch(ProjectListListener listener, boolean flag);
+    void send(ProjectListListener listener, String code);
 
 }

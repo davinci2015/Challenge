@@ -2,7 +2,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="hr.foi.challenge.challengeclient.activities.ProjectActivity">
+<<<<<<< HEAD
     <item android:id="@+id/action_add_feedback"
         android:title="@string/action_add_feedback"
         app:showAsAction="always" />
+=======
+    <item android:id="@+id/logout" android:title="Logout"/>
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:icon="@android:drawable/btn_dialog"
+        android:onClick="logout"
+        android:orderInCategory="100" app:showAsAction="always" />
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 </menu>

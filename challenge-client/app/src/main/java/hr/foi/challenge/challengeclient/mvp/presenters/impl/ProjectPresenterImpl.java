@@ -26,6 +26,7 @@ public class ProjectPresenterImpl implements ProjectPresenter {
         interactor.fetch(listener, projectId);
     }
 
+
     ProjectListener listener = new ProjectListener() {
         @Override
         public void onReceived(List<Feedback> projectList) {

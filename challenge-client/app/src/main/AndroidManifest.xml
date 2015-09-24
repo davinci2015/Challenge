@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <intent-filter>
@@ -33,6 +34,7 @@
         <activity
             android:name=".activities.ProjectListActivity"
             android:label="@string/title_activity_project"
+            android:uiOptions="splitActionBarWhenNarrow"
             android:parentActivityName=".activities.BaseActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

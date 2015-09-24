@@ -7,16 +7,22 @@ package hr.foi.challenge.challengeclient.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.AdapterView;
+=======
+import android.widget.EditText;
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 import android.widget.ListView;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hr.foi.challenge.challengeclient.R;
 import hr.foi.challenge.challengeclient.adapters.ProjectListAdapter;
 import hr.foi.challenge.challengeclient.helpers.MvpFactory;
@@ -38,9 +44,17 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
     boolean flag;
 
+<<<<<<< HEAD
     private ProjectListAdapter adapter;
 
     @Bind(R.id.listView) ListView listView;
+=======
+    @Bind(R.id.listView)
+    ListView listView;
+
+    @Bind(R.id.codeText)
+    EditText code;
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -109,10 +123,31 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
         projectListView.onProjectSelected(projectID);
     }
 
+<<<<<<< HEAD
     ListView.OnItemClickListener listListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             onProjectSelected(adapter.getItem(position).getId());
         }
     };
+=======
+    @Override
+    public void onCodeSuccess() {
+        // zovi
+    }
+
+    @Override
+    public void onCodeFailed() {
+
+    }
+
+    @OnClick(R.id.submitCode)
+    void submitCode() {
+        if(TextUtils.isEmpty(code.getText().toString())) {
+            // zovi activity da izbaci grešku
+        } else {
+            presenter.sendCode(code.getText().toString());
+        }
+    }
+>>>>>>> be024b107441799280ddea9017320c7f24c02c42
 }
