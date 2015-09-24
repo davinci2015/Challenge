@@ -125,7 +125,7 @@ public class ProjectFragment extends Fragment implements ProjectListFragmentView
 
     @Override
     public void onCodeSuccess() {
-        // zovi
+        // poziv
     }
 
     @Override
