@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Challenge Client</string>
+    <string name="app_name">Feedlr</string>
     <string name="please_wait">Please wait...</string>
     <string name="loading_projects">Loading projects...</string>
     <string name="register">Register</string>
@@ -7,7 +7,7 @@
     <string name="username_error">Username is too short</string>
     <string name="password_error">Password is too short</string>
     <string name="incorrect_credentials">Provided credentials are incorrect</string>
-    <string name="title_activity_project">ProjectActivity</string>
+    <string name="title_activity_project">Feedlr</string>
     <string name="username">Username</string>
     <string name="submit">Submit</string>
     <string name="take_photo">Take a photo</string>
@@ -15,7 +15,7 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_register">Registration</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -37,7 +37,7 @@
     <string name="registration_error">Username or mail already in use!</string>
     <string name="registration_success_title">Success</string>
     <string name="registration_success_message">Registration was successful! You will be logged in now.</string>
-    <string name="title_activity_feedback">FeedbackActivity</string>
+    <string name="title_activity_feedback">Create a Feedback</string>
 
     <string name="feedback_hint">Enter your text here</string>
     <string name="feedback_group_title">Choose a group:</string>

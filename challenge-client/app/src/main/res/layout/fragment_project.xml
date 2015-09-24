@@ -51,6 +51,8 @@
             android:id="@+id/rank_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:textColor="#DEFFF9"
             android:text="@string/ranking" />
 
     </FrameLayout>
