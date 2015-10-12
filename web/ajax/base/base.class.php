@@ -2,9 +2,9 @@
     class Database {
 
         private static $server = "localhost";
-        private static $user = "dummy";
-        private static $lozinka = "challenge";
-        private static $baza = "challenge";
+        private static $user = "";
+        private static $lozinka = "";
+        private static $baza = "";
         private $mysqli;
 
         private function connectDB(){

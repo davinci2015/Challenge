@@ -1,10 +1,10 @@
 <?php
     class Database {
 
-        private static $server = "46.101.207.199";
-        private static $user = "dummy";
-        private static $lozinka = "dummy";
-        private static $baza = "challenge";
+        private static $server = "";
+        private static $user = "";
+        private static $lozinka = "";
+        private static $baza = "";
         private $mysqli;
 
         private function connectDB(){
